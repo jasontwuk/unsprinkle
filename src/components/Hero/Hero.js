@@ -2,9 +2,30 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 const Hero = () => {
+  const src = "/images/hero-img.jpg";
+
   return (
     <Wrapper>
-      <HeroImage src="/images/hero-img.jpg" />
+      <picture>
+          <source 
+            type="image/avif"
+            srcSet={`
+              ${src.replace(".jpg", ".avif")} 1x,
+              ${src.replace(".jpg", "@2x.avif")} 2x,
+              ${src.replace(".jpg", "@3x.avif")} 3x,
+            `}
+          />
+          <source 
+            type="image/jpeg"
+            srcSet={`
+              ${src} 1x,
+              ${src.replace(".jpg", "@2x.jpg")} 2x,
+              ${src.replace(".jpg", "@3x.jpg")} 3x,
+            `}
+          />
+          <HeroImage src={src} />
+        </picture>
+      
       <Swoop src="/swoop.svg" />
     </Wrapper>
   );
@@ -25,6 +46,8 @@ const HeroImage = styled.img`
   width: 500px;
   height: 500px;
   max-height: 100%;
+  object-fit: cover;
+  object-position: 0 70px;
 `;
 
 const Swoop = styled.img`
