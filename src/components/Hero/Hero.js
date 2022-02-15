@@ -23,10 +23,10 @@ const Hero = () => {
               ${src.replace(".jpg", "@3x.jpg")} 3x,
             `}
           />
-          <HeroImage src={src} />
+          <HeroImage src={src} alt="An example of the photos distributed through this site (a cat on black background)" />
         </picture>
       
-      <Swoop src="/swoop.svg" />
+      <Swoop src="/swoop.svg" alt="" />
     </Wrapper>
   );
 };
